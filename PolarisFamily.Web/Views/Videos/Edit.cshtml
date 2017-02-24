@@ -1,0 +1,46 @@
+﻿@model PolarisFamily.Models.Video
+@{
+    ViewData["Title"] = "编辑";
+}
+<div class="container">
+    <h2>编辑视频</h2>
+    <form asp-action="Edit">
+        <div class="form-horizontal">
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="VideoID" />
+            <div class="form-group">
+                <label asp-for="VideoRelativeUrl" class="col-md-2 control-label">视频地址</label>
+                <div class="col-md-10">
+                    <input asp-for="VideoRelativeUrl" class="form-control" />
+                    <span asp-validation-for="VideoRelativeUrl" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="VideoName" class="col-md-2 control-label">视频名称</label>
+                <div class="col-md-10">
+                    <input asp-for="VideoName" class="form-control" />
+                    <span asp-validation-for="VideoName" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="col-md-2 control-label">视频描述</label>
+                <div class="col-md-10">
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="保存" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </form>
+    <div>
+        <a asp-action="Index">返回上一层</a>
+    </div>
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+</div>

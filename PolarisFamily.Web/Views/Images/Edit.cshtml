@@ -1,0 +1,46 @@
+﻿@model PolarisFamily.Models.Image
+@{
+    ViewData["Title"] = "编辑";
+}
+<div class="container">
+    <h2>编辑图片</h2>
+    <form asp-action="Edit">
+        <div class="form-horizontal">
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ImageID" />
+            <div class="form-group">
+                <label asp-for="RelativeUrl" class="col-md-2 control-label">图片地址</label>
+                <div class="col-md-10">
+                    <input asp-for="RelativeUrl" class="form-control" />
+                    <span asp-validation-for="RelativeUrl" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageName" class="col-md-2 control-label">图片名称</label>
+                <div class="col-md-10">
+                    <input asp-for="ImageName" class="form-control" />
+                    <span asp-validation-for="ImageName" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="保存" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </form>
+    <div>
+        <a asp-action="Index">返回上一层</a>
+    </div>
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+</div>

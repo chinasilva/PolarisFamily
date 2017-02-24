@@ -1,0 +1,39 @@
+﻿@model PolarisFamily.Models.Theme
+@{
+    ViewData["Title"] = "编辑";
+}
+<div class="container">
+    <h2>编辑栏目</h2>
+    <form asp-action="Edit">
+        <div class="form-horizontal">
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ThemeID" />
+            <div class="form-group">
+                <label asp-for="ThemeName" class="col-md-2 control-label">栏目名称</label>
+                <div class="col-md-10">
+                    <input asp-for="ThemeName" class="form-control" />
+                    <span asp-validation-for="ThemeName" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for=" Description" class="col-md-2 control-label">栏目描述</label>
+                <div class="col-md-10">
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="保存" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </form>
+    <div>
+        <a asp-action="Index">返回上一层</a>
+    </div>
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+</div>

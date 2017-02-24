@@ -1,0 +1,57 @@
+﻿@model PolarisFamily.Models.News
+@{
+    ViewData["Title"] = "编辑";
+}
+@section Scripts {
+    @{
+        <script src="~/js/Image.js"></script>
+    }
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<div class="container">
+    <h2>编辑新闻</h2>
+    <form asp-action="Edit">
+        <div class="form-horizontal">
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NewsName" class="col-md-2 control-label">新闻名称</label>
+                <div class="col-md-10">
+                    <input asp-for="NewsName" class="form-control" />
+                    <span asp-validation-for="NewsName" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="NewsDescription" class="col-md-2 control-label">新闻描述</label>
+                <div class="col-md-10">
+                    <input asp-for="NewsDescription" class="form-control" />
+                    <span asp-validation-for="NewsDescription" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="RelativeUrl" class="col-md-2 control-label">新闻链接</label>
+                <div class="col-md-10">
+                    <input asp-for="RelativeUrl" class="form-control" />
+                    <span asp-validation-for="RelativeUrl" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="lastname" class="col-sm-2 control-label">新闻类型</label>
+                <div class="col-md-10">
+                    @Html.DropDownList("themeList", ViewData["ThemeID"] as IEnumerable<SelectListItem>, "--请选择--", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <input id="NewsType" name="NewsType" type="hidden" />
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="保存" class="btn btn-default"  onclick="OnSubmitOrder()"/>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div>
+        <a asp-action="Index">返回上一层</a>
+    </div>
+
+</div>

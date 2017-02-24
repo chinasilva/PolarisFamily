@@ -1,0 +1,47 @@
+﻿@model IEnumerable<PolarisFamily.Models.Image>
+@{
+    ViewData["Title"] = "图片";
+}
+<div class="container">
+    <h2>图片</h2>
+    <p>
+        <a asp-action="Create">新建图片</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ImageName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RelativeUrl)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ImageName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RelativeUrl)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.ImageID">编辑</a> |
+                        <a asp-action="Details" asp-route-id="@item.ImageID">详细信息</a> |
+                        <a asp-action="Delete" asp-route-id="@item.ImageID">删除</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

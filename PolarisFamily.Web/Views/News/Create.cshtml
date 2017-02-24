@@ -1,0 +1,75 @@
+﻿@model PolarisFamily.Web.Models.News.NewsViewModel
+
+@{
+    ViewData["Title"] = "添加";
+}
+@section Scripts {
+    @{
+        <script src="~/js/Image.js"></script>
+    }
+}
+<div class="container">
+    <h2>添加新闻</h2>
+
+  
+
+    <form id="form1" class="form-horizontal" role="form"  asp-action="Create">
+        <div class="form-group">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <label for="firstname" class="col-sm-2 control-label">新闻名称</label>
+            <div class="col-sm-10">
+                <input type="text" asp-for="@Model.News.NewsName" class="form-control" name="NewsName" placeholder="新闻名称">
+                <span asp-validation-for="@Model.News.NewsName" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastname" class="col-sm-2 control-label">新闻描述</label>
+            <div class="col-sm-10">
+                <input asp-for="@Model.News.NewsDescription" type="text" class="form-control" name="NewsDescription" placeholder="请输入新闻描述">
+                <span asp-validation-for="@Model.News.NewsDescription" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastname" class="col-sm-2 control-label">新闻链接</label>
+            <div class="col-sm-10">
+                <input asp-for="@Model.News.RelativeUrl" type="text" class="form-control" name="RelativeUrl" placeholder="请输入新闻链接">
+                <span asp-validation-for="@Model.News.RelativeUrl" class="text-danger" />
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="lastname" class="col-sm-2 control-label">新闻类型</label>
+            <div class="col-md-10" >
+                @Html.DropDownList("themeList", ViewData["ThemeID"] as IEnumerable<SelectListItem>, "--请选择--", new { @class = "form-control" })
+            </div>
+        </div>
+        @*
+        <div class="form-group">
+            <label for="lastname" class="col-sm-2 control-label">视频选择</label>
+                <div class="col-md-10">
+                    @Html.DropDownList("dpVideo", Model.VideoItem, "==请选择==")
+                    <span asp-validation-for="@Model.VideoItem" class="text-danger" />
+                </div>
+        </div>
+        <div class="form-group">
+            <label for="lastname" class="col-sm-2 control-label">图片选择</label>
+            <div class="col-md-10">
+                @Html.DropDownList("dpImage", Model.ImageItem, "==请选择==")
+                <span asp-validation-for="@Model.ImageItem" class="text-danger" />
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            <input id="NewsType" name="NewsType" type="hidden" />
+            <label for="lastname" class="col-sm-2 control-label"></label>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="submit" class="btn btn-default btn-primary" value="确定上传" onclick="OnSubmitOrder()" />
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    function alart()
+    {
+        jAlert('这是一个可自定义样式的警告对话框', '警告对话框');
+    }
+</script>

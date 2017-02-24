@@ -1,0 +1,72 @@
+﻿@model PolarisFamily.Models.Image
+
+@{
+    ViewData["Title"] = "删除图片";
+}
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<div class="container">
+    <h2>删除图片</h2>
+
+    <h3>确定要删除吗?</h3>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                图片名称
+                @*@Html.DisplayNameFor(model => model.ImageName)*@
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ImageName)
+            </dd>
+            <dt>
+                图片描述
+                @*@Html.DisplayNameFor(model => model.Description)*@
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+            <dt>
+                链接地址
+                @*@Html.DisplayNameFor(model => model.RelativeUrl)*@
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.RelativeUrl)
+            </dd>
+            <dt>
+                记录人员
+                @*@Html.DisplayNameFor(model => model.RecordUser)*@
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.RecordUser)
+            </dd>
+            <dt>
+                记录时间
+                @*@Html.DisplayNameFor(model => model.RecordTime)*@
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.RecordTime)
+            </dd>
+            <dt>
+                更新人员
+                @*@Html.DisplayNameFor(model => model.UpdateUser)*@
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.UpdateUser)
+            </dd>
+            <dt>
+                更新时间
+                @*@Html.DisplayNameFor(model => model.UpdateTime)*@
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.UpdateTime)
+            </dd>
+        </dl>
+
+        <form asp-action="Delete">
+            <div class="form-actions no-color">
+                <input type="submit" value="删除" class="btn btn-default" /> |
+                <a asp-action="Index">返回上一层</a>
+            </div>
+        </form>
+    </div>
+</div>

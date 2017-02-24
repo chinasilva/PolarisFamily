@@ -1,0 +1,55 @@
+﻿@model IEnumerable<PolarisFamily.Models.News>
+@{
+    ViewData["Title"] = "新闻";
+}
+<div class="container">
+    <h2>新闻</h2>
+    <p>
+        <a asp-action="Create">新建新闻</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    新闻名称
+                    @*@Html.DisplayNameFor(model => model.News.NewsName)*@
+                </th>
+                <th>
+                    新闻描述
+                    @*@Html.DisplayNameFor(model => model.News.NewsName)*@
+                </th>
+                <th>
+                    新闻类型
+                    @*@Html.DisplayNameFor(model => model.RelativeUrl)*@
+                </th>
+                <th>
+                    新闻链接
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NewsName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NewsDescription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Themes.ThemeName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RelativeUrl)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.NewsID">编辑</a> |
+                        <a asp-action="Details" asp-route-id="@item.NewsID">详细信息</a> |
+                        <a asp-action="Delete" asp-route-id="@item.NewsID">删除</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

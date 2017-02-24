@@ -1,0 +1,58 @@
+﻿@model PolarisFamily.Models.Image
+@{
+    ViewData["Title"] = "图片详情";
+}
+<div class="container">
+    <h2>图片详情</h2>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ImageName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ImageName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.RelativeUrl)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.RelativeUrl)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.RecordUser)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.RecordUser)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.RecordTime)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.RecordTime)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.UpdateUser)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.UpdateUser)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.UpdateTime)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.UpdateTime)
+            </dd>
+        </dl>
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model.ImageID">Edit</a> |
+            <a asp-action="Index">返回上一层</a>
+        </div>
+    </div>
+</div>

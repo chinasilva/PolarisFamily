@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{04601971-3013-4C79-8498-8A01262CF1E7}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PolarisFamily.Models", "PolarisFamily.Models\PolarisFamily.Models.xproj", "{E35F776C-998B-45D7-B9DC-454AC370B18E}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PolarisFamily.Data", "PolarisFamily.Data\PolarisFamily.Data.xproj", "{13BFBB38-CCD3-4268-889A-3D5A8EAF29CD}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PolarisFamily.Web", "PolarisFamily.Web\PolarisFamily.Web.xproj", "{4B3456F3-1050-494A-BCD0-8EA8A6D701F6}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PolarisFamily.WebApi", "PolarisFamily.WebApi\PolarisFamily.WebApi.xproj", "{26D5931E-FB89-4F76-BCC8-C53E0814BF00}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E35F776C-998B-45D7-B9DC-454AC370B18E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E35F776C-998B-45D7-B9DC-454AC370B18E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E35F776C-998B-45D7-B9DC-454AC370B18E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E35F776C-998B-45D7-B9DC-454AC370B18E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13BFBB38-CCD3-4268-889A-3D5A8EAF29CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13BFBB38-CCD3-4268-889A-3D5A8EAF29CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13BFBB38-CCD3-4268-889A-3D5A8EAF29CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13BFBB38-CCD3-4268-889A-3D5A8EAF29CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B3456F3-1050-494A-BCD0-8EA8A6D701F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B3456F3-1050-494A-BCD0-8EA8A6D701F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B3456F3-1050-494A-BCD0-8EA8A6D701F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B3456F3-1050-494A-BCD0-8EA8A6D701F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26D5931E-FB89-4F76-BCC8-C53E0814BF00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26D5931E-FB89-4F76-BCC8-C53E0814BF00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26D5931E-FB89-4F76-BCC8-C53E0814BF00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26D5931E-FB89-4F76-BCC8-C53E0814BF00}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		VisualSVNWorkingCopyRoot = .
+	EndGlobalSection
+EndGlobal

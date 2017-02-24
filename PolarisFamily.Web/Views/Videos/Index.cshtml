@@ -1,0 +1,50 @@
+﻿@model IEnumerable<PolarisFamily.Models.Video>
+@{
+    ViewData["Title"] = "视频";
+}
+<div class="container">
+    <h2>视频</h2>
+    <p>
+        <a asp-action="Create">新建视频</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    视频名称
+                  @*  @Html.DisplayNameFor(model => model.VideoName)*@
+                </th>
+                <th>
+                    视频描述
+                    @*@Html.DisplayNameFor(model => model.Description)*@
+                </th>
+                <th>
+                    链接地址
+                    @*@Html.DisplayNameFor(model => model.VideoRelativeUrl)*@
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VideoName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VideoRelativeUrl)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.VideoID">编辑</a> |
+                        <a asp-action="Details" asp-route-id="@item.VideoID">详细信息</a> |
+                        <a asp-action="Delete" asp-route-id="@item.VideoID">删除</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

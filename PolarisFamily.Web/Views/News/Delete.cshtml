@@ -1,0 +1,72 @@
+﻿@model PolarisFamily.Web.Models.News.NewsViewModel
+
+@{
+    ViewData["Title"] = "ɾ������";
+}
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<div class="container">
+    <h2>ɾ������</h2>
+
+    <h3>ȷ��Ҫɾ����?</h3>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                ��������
+                @*@Html.DisplayNameFor(model => model.ImageName)*@
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.News.NewsName)
+            </dd>
+            <dt>
+                ��������
+                @*@Html.DisplayNameFor(model => model.Description)*@
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.News.NewsDescription)
+            </dd>
+            <dt>
+                ���ŵ�ַ
+                @*@Html.DisplayNameFor(model => model.RelativeUrl)*@
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.News.RelativeUrl)
+            </dd>
+            <dt>
+                ��¼��Ա
+                @*@Html.DisplayNameFor(model => model.RecordUser)*@
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.News.RecordUser)
+            </dd>
+            <dt>
+                ��¼ʱ��
+                @*@Html.DisplayNameFor(model => model.RecordTime)*@
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.News.RecordTime)
+            </dd>
+            <dt>
+                ������Ա
+                @*@Html.DisplayNameFor(model => model.UpdateUser)*@
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.News.UpdateUser)
+            </dd>
+            <dt>
+                ����ʱ��
+                @*@Html.DisplayNameFor(model => model.UpdateTime)*@
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.News.UpdateTime)
+            </dd>
+        </dl>
+
+        <form asp-action="Delete">
+            <div class="form-actions no-color">
+                <input type="submit" value="ɾ��" class="btn btn-default" /> |
+                <a asp-action="Index">������һ��</a>
+            </div>
+        </form>
+    </div>
+</div>
