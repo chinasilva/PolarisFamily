@@ -16,6 +16,6 @@ namespace PolarisFamily.Data.Interfaces
         Task UpdateAsync(News News);
         Task<List<News>> GetNewsByThemsAsync(int themsID);
         Task<int> AddNewsRevolutionAsync(NewsRevolution newsRevolution);
-
+        Task<IEnumerable<News>> GetNewsAsync(string filter, int pageSize, int pageCount);
     }
 }

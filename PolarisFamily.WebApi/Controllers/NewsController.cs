@@ -32,16 +32,24 @@ namespace PolarisFamily.WebApi.Controllers
             _newsRepository = newsRepository;
             _settings = settings.Value;
         }
+        [HttpGet]
+        public async Task<IActionResult> Get([FromQuery] string keyword, [FromQuery] int page, [FromQuery] int pagesize)
+        {
+            if (0 == pagesize)
+                return ResponseHelper.BadRequest();
 
-        //[HttpGet("newsID")]
-        // public async Task<IActionResult> Get(int newsID)
-        //{
-        //    News news= await _newsRepository.GetAsync(newsID);
-        //    news.Images = await _imageRepository.GetNewsImages(newsID);
-        //    news.Videos= await _videoRepository.GetVideosNewAsync(newsID);
-        //    JsonResult result = new JsonResult(news);
-        //    return result;
-        //}
+            IEnumerable<News> news = await _newsRepository.GetNewsAsync(keyword, pagesize, page);
+            JsonResult result = new JsonResult(news);
+            return result;
+        }
+
+        [HttpGet("newsID")]
+        public async Task<IActionResult> Get(int newsID)
+        {
+            News news = await _newsRepository.GetAsync(newsID);
+            JsonResult result = new JsonResult(news);
+            return result;
+        }
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] News value)
         {
@@ -61,6 +69,13 @@ namespace PolarisFamily.WebApi.Controllers
             return Ok();
         }
 
+        [HttpGet, Route("getall")]
+        public async Task<IActionResult> GetAll(string themeID)
+        {
+            var lst = await _newsRepository.GetNewsByThemsAsync(Convert.ToInt32(themeID));
+            JsonResult result = new JsonResult(lst);
+            return result;
+        }
 
     }
 }

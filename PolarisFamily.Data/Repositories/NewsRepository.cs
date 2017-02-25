@@ -74,7 +74,18 @@ namespace PolarisFamily.Data.Repositories
                     .ToListAsync();
             return results.Select(n => n.News).ToList();
         }
-        
+        public async Task<IEnumerable<News>> GetNewsAsync(string filter, int pageSize, int pageCount)
+        {
+            var results = await _dbContext.News.Where
+                    (p => (String.IsNullOrEmpty(filter) ||
+                     p.NewsName.Contains(filter) || p.NewsDescription.Contains(filter)))
+                    .Select(p => new { News = p, })
+                    .Skip(pageSize * pageCount)
+                    .Take(pageSize)
+                    .ToListAsync();
+
+            return results.Select(p => p.News);
+        }
 
     }
 }
