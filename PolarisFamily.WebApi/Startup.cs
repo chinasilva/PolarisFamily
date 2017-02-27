@@ -122,6 +122,7 @@ namespace PolarisFamily.WebApi
             services.AddScoped<IImageRepository, ImageRepository>();
             services.AddScoped<IVideoRepository, VideosRepository>();
             services.AddScoped<INewsRepository, NewsRepository>();
+            services.AddScoped<IThemeRepository,ThemeRepository>();
 
             //services.AddScoped<ICartItemRepository, CartItemRepository>();
             //services.AddScoped<ICategoryRepository, CategoryRepository>();

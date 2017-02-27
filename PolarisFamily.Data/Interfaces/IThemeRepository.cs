@@ -14,6 +14,7 @@ namespace PolarisFamily.Data.Interfaces
         Task<Theme> GetAsync(int themeID);
         Task<List<Theme>> GetAllAsync();
         Task<string> GetThemeNameByThemsAsync(int themeID);
+        Task<IEnumerable<Theme>> GetThemesAsync(string filter, int pageSize, int pageCount);
 
     }
 }

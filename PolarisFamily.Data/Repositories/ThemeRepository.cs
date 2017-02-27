@@ -56,5 +56,17 @@ namespace PolarisFamily.Data.Repositories
                 return theme.ThemeName;
 
         }
+        public async Task<IEnumerable<Theme>> GetThemesAsync(string filter, int pageSize, int pageCount)
+        {
+            var results = await _dbContext.Theme.Where
+                    (t => (String.IsNullOrEmpty(filter) ||
+                     t.ThemeName.Contains(filter) || t.Description.Contains(filter)))
+                    .Select(t => new { Theme = t, })
+                    .Skip(pageSize * pageCount)
+                    .Take(pageSize)
+                    .ToListAsync();
+
+            return results.Select(t => t.Theme);
+        }
     }
 }

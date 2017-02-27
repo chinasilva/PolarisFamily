@@ -15,21 +15,24 @@ using Microsoft.EntityFrameworkCore;
 namespace PolarisFamily.WebApi.Controllers
 {
     [Route("api/v1/[controller]")]
-    public class NewsController : Controller
+    public class ThemesController : Controller
     {
         private readonly IVideoRepository _videoRepository;
         private readonly IImageRepository _imageRepository;
         private readonly INewsRepository _newsRepository;
+        private readonly IThemeRepository _themeRepository;
+
         private readonly WebApiSettings _settings;
         private PolarisFamilyDbContext _dbContext = null;
 
-        public NewsController(IVideoRepository videoRepository,INewsRepository newsRepository, IImageRepository imageRepository,
+        public ThemesController(IThemeRepository themeRespository, IVideoRepository videoRepository,INewsRepository newsRepository, IImageRepository imageRepository,
              IOptions<WebApiSettings> settings,PolarisFamilyDbContext Context)
         {
             _dbContext = Context;
             _videoRepository = videoRepository;
             _imageRepository = imageRepository;
             _newsRepository = newsRepository;
+            _themeRepository = themeRespository;
             _settings = settings.Value;
         }
         [HttpGet]
@@ -38,33 +41,33 @@ namespace PolarisFamily.WebApi.Controllers
             if (0 == pagesize)
                 return ResponseHelper.BadRequest();
 
-            IEnumerable<News> news = await _newsRepository.GetNewsAsync(keyword, pagesize, page);
+            IEnumerable<Theme> news = await _themeRepository.GetThemesAsync(keyword, pagesize, page);
             JsonResult result = new JsonResult(news);
             return result;
         }
 
-        [HttpGet,Route("newsID")]
-        public async Task<IActionResult> Get(int newsID)
+        [HttpGet,Route("themeID")]
+        public async Task<IActionResult> Get(int themeID)
         {
-            News news = await _newsRepository.GetAsync(newsID);
-            JsonResult result = new JsonResult(news);
+            Theme theme= await _themeRepository.GetAsync(themeID);
+            JsonResult result = new JsonResult(theme);
             return result;
         }
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] News value)
+        public async Task<IActionResult> Post([FromBody] Theme value)
         {
-            if (null == value || string.IsNullOrEmpty(value.NewsID.ToString()))
+            if (null == value || string.IsNullOrEmpty(value.ThemeID.ToString()))
                 return ResponseHelper.BadRequest();
 
             // 先查看当前保存的数据中是否有这么一个产品信息
-            var news = await _newsRepository.GetAsync(value.NewsID);
-            if (null == news)
-                await _newsRepository.AddAsync(value);
+            var theme = await _themeRepository.GetAsync(value.ThemeID);
+            if (null == theme)
+                await _themeRepository.AddAsync(value);
             else
             {
-                news.NewsName= value.NewsName;
-                news.NewsDescription = value.NewsDescription;
-                await _newsRepository.UpdateAsync(news);
+                theme.ThemeName= value.ThemeName;
+                theme.Description= value.Description;
+                await _themeRepository.UpdateAsync(theme);
             }
             return Ok();
         }
@@ -72,15 +75,7 @@ namespace PolarisFamily.WebApi.Controllers
         [HttpGet, Route("getall")]
         public async Task<IActionResult> GetAll()
         {
-            var lst = await _newsRepository.GetAllAsync();;
-            JsonResult result = new JsonResult(lst);
-            return result;
-        }
-
-        [HttpGet, Route("getbytheme")]
-        public async Task<IActionResult> GetByTheme(string themeID)
-        {
-            var lst = await _newsRepository.GetNewsByThemsAsync(Convert.ToInt32(themeID));
+            var lst = await _themeRepository.GetAllAsync();;
             JsonResult result = new JsonResult(lst);
             return result;
         }
