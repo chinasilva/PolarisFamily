@@ -15,6 +15,7 @@ namespace PolarisFamily.Models
         public int ThemeID { get; set; }
         public string ThemeName { get; set; }
         public string Description { get; set; }
+        public string RelativeUrl { get; set; }
         public DateTime? RecordTime { get; set; }
         public String RecordUser { get; set; }
         public DateTime? UpdateTime { get; set; }

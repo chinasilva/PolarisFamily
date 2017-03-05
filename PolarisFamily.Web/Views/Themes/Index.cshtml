@@ -16,21 +16,27 @@
                 <th>
                     栏目描述
                 </th>
-                <th></th>
+                <th>
+                    栏目图标网址
+                </th>
             </tr>
         </thead>
-        <tbody>
+        <tbody valign="top">
             @foreach (var item in Model)
             {
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.ThemeName)
                     </td>
-                    <td>
+                    <td style="word-break:break-all">
                         @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td style="word-break:break-all">
+                        @Html.DisplayFor(modelItem => item.RelativeUrl)
                     </td>
                     <td>
                         <a asp-action="Edit" asp-route-id="@item.ThemeID">编辑</a> |
+                        <a asp-action="Details" asp-route-id="@item.ThemeID">详细信息</a> |
                         <a asp-action="Delete" asp-route-id="@item.ThemeID">删除</a>
                     </td>
                 </tr>

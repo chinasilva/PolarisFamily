@@ -45,7 +45,7 @@ namespace PolarisFamily.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ThemeName,Description")]Theme themes)
+        public async Task<IActionResult> Create([Bind("ThemeName,Description,RelativeUrl")]Theme themes)
         {
             if (ModelState.IsValid)
             {
@@ -118,7 +118,7 @@ namespace PolarisFamily.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int? id, [Bind("ThemeName,Description")] Theme t)
+        public async Task<IActionResult> Edit(int? id, Theme t)
         {
             if (ModelState.IsValid)
             {
@@ -131,6 +131,16 @@ namespace PolarisFamily.Web.Controllers
                 {
                     ModelState.AddModelError(string.Empty, "栏目名称不能为空.");
                     return View(t);
+                }
+                var themeUrl= Request.Form["RelativeUrl"].ToString();
+                var themeDesc= Request.Form["Description"].ToString();
+                if (!string.IsNullOrEmpty(themeUrl))
+                {
+                    t.RelativeUrl = themeUrl;
+                }
+                if (!string.IsNullOrEmpty(themeDesc))
+                {
+                    t.Description = themeDesc;
                 }
                 t.UpdateUser = HttpContext.User.Identity.Name;
                 t.UpdateTime = DateTime.Now;

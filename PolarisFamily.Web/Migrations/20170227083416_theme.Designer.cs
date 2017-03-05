@@ -8,9 +8,10 @@ using PolarisFamily.Data;
 namespace PolarisFamily.Web.Migrations
 {
     [DbContext(typeof(PolarisFamilyDbContext))]
-    partial class PolarisFamilyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170227083416_theme")]
+    partial class theme
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.0-rtm-22752")

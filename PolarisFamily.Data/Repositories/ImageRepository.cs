@@ -48,16 +48,28 @@ namespace PolarisFamily.Data.Repositories
             return results.Select(i => i.ProductImage).ToList();
         }
 
-        public async Task<List<Image>> GetNewsImages(int newID)
+        //public async Task<List<Image>> GetNewsImages(int newID)
+        //{
+        //    var results = await _dbContext.ImageRevolutions.Where
+        //        (i => i.NewsID== newID)
+        //        .Select(i => new { ImageRevolution = i, })
+        //        .ToListAsync();
+
+        //    return results.Select(i => i.ImageRevolution).ToList();
+        //}
+
+        public async Task<IEnumerable<Image>> GetImageAsync(string filter, int pageSize, int pageCount)
         {
             var results = await _dbContext.Images.Where
-                (i => i.NewsID== newID)
-                .Select(i => new { ProductImage = i, })
-                .ToListAsync();
+                    (i => (String.IsNullOrEmpty(filter) ||
+                     i.ImageName.Contains(filter) || i.Description.Contains(filter)))
+                    .Select(i => new { Image = i, })
+                    .Skip(pageSize * pageCount)
+                    .Take(pageSize)
+                    .ToListAsync();
 
-            return results.Select(i => i.ProductImage).ToList();
+            return results.Select(i => i.Image);
         }
-
 
         public async Task UpdateAsync(Image image)
         {
@@ -68,5 +80,15 @@ namespace PolarisFamily.Data.Repositories
         {
             return await _dbContext.Images.ToListAsync();
         }
+
+        public async Task<List<Image>> GetSliderAsync()
+        {
+            var results = await _dbContext.Images.Where
+                (i => (i.Description.Contains("滚图")))
+                .Select(i => new { Image = i, })
+                .ToListAsync();
+            return results.Select(i=>i.Image).ToList();
+        }
+
     }
 }
